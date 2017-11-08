@@ -20,6 +20,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.tecsup.gestion.exception.DAOException;
 import com.tecsup.gestion.exception.EmptyResultException;
+import com.tecsup.gestion.model.Department;
 import com.tecsup.gestion.model.Employee;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -44,7 +45,7 @@ public class EmployeeDAOTest {
 		logger.info("Antes de cada metodo");
 	}
 	
-	@Test
+	//@Test
 	public void testFindEmployeeById() {
 
 		try {
@@ -79,6 +80,26 @@ public class EmployeeDAOTest {
 			//Assert.assertEquals(emps.size(), 4);
 
 			logger.info(emps.toString());
+
+		} catch (EmptyResultException e) {
+			fail(e.getMessage());
+		} catch (DAOException e) {
+			fail(e.getMessage());
+		}
+
+		
+	}
+	
+	@Test
+	public void testFindAllDeps() {
+
+		try {
+			//
+			List<Department> deps = employeeDAO.findAllDepartments();
+
+			//Assert.assertEquals(deps.size(), 4);
+
+			logger.info(deps.toString());
 
 		} catch (EmptyResultException e) {
 			fail(e.getMessage());
