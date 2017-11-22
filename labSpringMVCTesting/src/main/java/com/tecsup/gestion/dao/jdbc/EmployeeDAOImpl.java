@@ -296,4 +296,25 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		}
 	}
 
+	@Override
+	public boolean isEmployeeExist(Employee emp) throws DAOException {
+		
+		logger.info("validate(): user: " + emp.getLogin());
+		
+		String login = emp.getLogin();
+
+		String query = "SELECT login, password, employee_id, first_name, last_name, salary, department_id  "
+				+ " FROM employees WHERE login = ? ";
+	
+		try {
+
+			return false;
+	
+		} catch (Exception e) {
+			logger.info("Error: " + e.getMessage());
+			throw new DAOException(e.getMessage());
+		}
+
+	}
+
 }

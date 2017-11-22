@@ -23,7 +23,6 @@ public interface EmployeeService {
 			throws DAOException;
 	
 	
-	
 	Department findDep(int department_id) throws DAOException, EmptyResultException;
 	
 	List<Department> findAllDep() 
@@ -36,5 +35,11 @@ public interface EmployeeService {
 	
 	void deleteDep(String name)
 			throws DAOException;
+	
+
+	//WS
+	boolean isEmployeeExist(Employee emp) throws DAOException, EmptyResultException;
+
+	Employee findEmployeeByLogin(String login) throws DAOException, EmptyResultException;
 	
 }

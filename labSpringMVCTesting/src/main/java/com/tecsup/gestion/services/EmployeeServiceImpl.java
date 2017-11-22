@@ -2,12 +2,16 @@ package com.tecsup.gestion.services;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tecsup.gestion.dao.EmployeeDAO;
+import com.tecsup.gestion.dao.jdbc.EmployeeDAOImpl;
 import com.tecsup.gestion.exception.DAOException;
 import com.tecsup.gestion.exception.EmptyResultException;
+import com.tecsup.gestion.exception.LoginException;
 import com.tecsup.gestion.model.Department;
 import com.tecsup.gestion.model.Employee;
 
@@ -96,5 +100,26 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 		employeeDAO.updateDep(name, desc, city);
 	}
+
 	
+	
+	//WS
+
+	private static final Logger logger = LoggerFactory.getLogger(EmployeeDAOImpl.class);
+	
+	@Override
+	public boolean isEmployeeExist(Employee emp) throws DAOException, EmptyResultException {
+		boolean val = employeeDAO.isEmployeeExist(emp);
+		logger.info(String.valueOf(val));
+		return val;
+		
+	}
+
+	@Override
+	public Employee findEmployeeByLogin(String login) throws DAOException, EmptyResultException {
+		Employee emp = employeeDAO.findEmployeeByLogin(login);
+
+		return emp;
+	}
+
 }

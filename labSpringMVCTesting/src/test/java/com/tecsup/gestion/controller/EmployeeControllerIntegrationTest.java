@@ -35,7 +35,7 @@ public class EmployeeControllerIntegrationTest {
 	    this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
 	}
 	
-	//@Test
+	@Test
 	public void givenWac_whenServletContext_thenItProvidesGreetController() {
 	    ServletContext servletContext = wac.getServletContext();
 	     
@@ -63,7 +63,7 @@ public class EmployeeControllerIntegrationTest {
 									))));
 	}
 	
-	//@Test
+	@Test
     public void editForm() throws Exception {
 		
         mockMvc.perform(get("/admin/emp/editform/100"))
@@ -81,7 +81,7 @@ public class EmployeeControllerIntegrationTest {
             ;
 	}
 	
-	//@Test
+	@Test
     public void deletoForm() throws Exception {
 		
         mockMvc.perform(get("/admin/emp/deleteform/100"))

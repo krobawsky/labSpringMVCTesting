@@ -18,8 +18,6 @@ public interface EmployeeDAO {
 
 	void update(String login, String password, String lastname, String firstname, int salary, int dptId) throws DAOException;
 
-	Employee findEmployeeByLogin(String login) throws DAOException, EmptyResultException;
-
 	List<Employee> findAllEmployees() throws DAOException, EmptyResultException;
 
 	List<Employee> findEmployeesByName(String name) throws DAOException, EmptyResultException;
@@ -38,4 +36,10 @@ public interface EmployeeDAO {
 	
 	void deleteDep(String name) throws DAOException;
 
+	
+	//WS
+	
+	Employee findEmployeeByLogin(String login) throws DAOException, EmptyResultException;
+
+	boolean isEmployeeExist(Employee emp) throws DAOException;
 }
